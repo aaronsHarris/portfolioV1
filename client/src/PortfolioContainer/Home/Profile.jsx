@@ -1,4 +1,4 @@
-import React from "react";
+import Typical from "react-typical";
 
 export default function Profile() {
   return (
@@ -18,13 +18,31 @@ export default function Profile() {
                 {" "}
                 Hello, I'm <span className="highlighted-text">Aaron</span>
               </span>
-                      </div>
-                      <div className="profile-details-role">
-                          <span className="primary-text">
-                              {" "}
-                              <h1></h1>`
-                          </span>
-                      </div>
+            </div>
+            <div className="profile-details-role">
+              <span className="primary-text">
+                {" "}
+                <h1>
+                  {" "}
+                  <Typical
+                    loop={Infinity}
+                    steps={[
+                      "Enthuistastic Dev 😎",
+                      1000,
+                      "Full Stack Dev ✅",
+                      1000,
+                      "MERN Stack Dev 🌐",
+                      1000,
+                      "React Dev ⚛️",
+                      1000,
+                    ]}
+                  />
+                </h1>
+                              <span className="profile-role-tagline">
+                                  I build applications with front end and back end operations
+                </span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
