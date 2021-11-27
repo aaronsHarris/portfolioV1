@@ -1,4 +1,4 @@
-import Profile from "./Profile"
+import Profile from "./Profile/Profile"
 import Footer from "./Footer/Footer"
 import './Home.css'
 
