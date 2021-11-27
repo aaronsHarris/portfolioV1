@@ -3,6 +3,8 @@ import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
 import './AboutMe.css'
+
+
 export default function AboutMe(props) {
   let fadeInScreenHandler = (screen) => {
     if (screen.fadeScreen !== props.id) return;

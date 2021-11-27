@@ -1,9 +1,9 @@
-import { TOTAL_SCREENS, GET_SCREEN_INDEX } from "../../../utils/commonUtils";
-import ScrollService from "../../../utils/ScrollService";
+import { useState } from "react";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ScrollService from "../../../utils/ScrollService";
+import { TOTAL_SCREENS, GET_SCREEN_INDEX } from "../../../utils/commonUtils";
 import "./Header.css";
-import { useState } from "react";
 
 export default function Header() {
   const [selectedScreen, setSelectedScreen] = useState(0);
@@ -14,6 +14,7 @@ export default function Header() {
     let screenIndex = GET_SCREEN_INDEX(currentScreen.screenInView);
     if (screenIndex < 0) return;
   };
+
   let currentScreenSubscription =
     ScrollService.currentScreenBroadCaster.subscribe(updateCurrentScreen);
 
@@ -54,14 +55,22 @@ export default function Header() {
       <div className="header-parent">
         <div
           className="header-hamburger"
-          onClick={() => setSelectedScreen(!setSelectedScreen)}
+          onClick={() => setShowHeaderOptions(!setShowHeaderOptions)}
         >
           <FontAwesomeIcon className="header-hamburger-bars" icon={faBars} />
         </div>
         <div className="header-logo">
           <span>AARON~</span>
         </div>
-        <div className={(showHeaderOptions) ? 'header-options show-hamburger-options' : 'header-options'}>{getHeaderOptions()}</div>
+        <div
+          className={
+            showHeaderOptions
+              ? "header-options show-hamburger-options"
+              : "header-options"
+          }
+        >
+          {getHeaderOptions()}
+        </div>
       </div>
     </div>
   );
