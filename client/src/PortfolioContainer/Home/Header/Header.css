@@ -23,6 +23,7 @@
 }
 .header-options span{
     padding: 10px;
+    cursor: pointer;
 }
 .header-option{
     font-size: 16px;
