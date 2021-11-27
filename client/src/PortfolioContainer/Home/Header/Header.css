@@ -21,10 +21,10 @@
     display: flex;
     align-items: center;
 }
-.header-options span{
+/* .header-options span{
     padding: 10px;
     cursor: pointer;
-}
+} */
 .header-option{
     font-size: 16px;
     cursor: pointer;
@@ -35,10 +35,10 @@
     display: none;
     color: var(--white)
 }
-.header-option-seperator{
+.header-option-seperator {
     margin: 0 50px 0 0;
-    color: var(--white)
-}
+    color: var(--white);
+  }
 .selected-header-options{
     color: #ff5823
 }
