@@ -8,7 +8,15 @@ export default function Resume(props) {
   const [selectedBulletIndex, setSelectedBulletIndex] = useState(0);
   const [carousalOffSetStyle, setCarousalOffSetStyle] = useState({});
 
-  const ResumeHeading = (props) => {
+  let fadeInScreenHandler = (screen) => {
+    if (screen.fadeScreen !== props.id) return;
+    Animations.animations.fadeInScreen(props.id);
+  };
+  const fadeInSubscription =
+    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+
+    const ResumeHeading = (props) => {
+      return(
     <div className="resume-heading">
       <div className="resume-main-heading">
         <div className="heading-bullet">
@@ -28,9 +36,9 @@ export default function Resume(props) {
           <span>{props.description ? props.description : ""}</span>
         </div>
       </div>
-    </div>;
-  };
-
+    </div>
+)
+}
   const resumeBullets = [
     { label: "Education", logoSrc: "education.svg" },
     { label: "Work History", logoSrc: "work-history.svg" },
@@ -94,8 +102,8 @@ export default function Resume(props) {
         fromDate={"Aug 2008"}
         toDate={""}
       />
-      </div>,
-      
+    </div>,
+
     <div className="resume-screen-container" key="work-experience">
       <ResumeHeading
         heading={"General Assembly"}
@@ -108,7 +116,7 @@ export default function Resume(props) {
           I Worked in Software Engineering Immersive Program and learned all the
           latest core knowledge of several coding langauges.
         </span>
-        </div> 
+      </div>
       <div className="experience-description">
         <span className="resume-description-text">
           -Worked on daily labs and exercises in the MERN Stack and Ruby on
@@ -123,61 +131,88 @@ export default function Resume(props) {
           -We had an amazing culture between our cohort and established an
           awesome, supportive network for our future coding journey.
         </span>
-        </div>,
-
-        <div className="resume-screen-container programming-skills-container"
+      </div>
+      <div
+        className="resume-screen-container programming-skills-container"
         key="programming-skills"
-        >
-            {programmingSkillsDetails.map((skill, index) => (
-                <div className="skill-parent" key={index}>
-                    <div className="heading-bullet"></div>
-                    <span>{skill.skill}</span>
-                    <div className="skill-percentage">
-                        <div style={{ width: skill.ratingPercentage + "%" }}
-                        className="active-percentage">
-
-                        </div>
-                    </div>
-                </div>
-            ))}
-        </div>,
-
-        <div className="resume-screen-container" key="projects">
-            {projectDetails.map((projectDetails, index) => (
-                <ResumeHeading
-                    key={index}
-                    heading={projectDetails.title}
-                    subHeading={projectDetails.subHeading}
-                    description={projectDetails.description}
-                    fromDate={projectDetails.duration.fromDate}
-                    toDate={projectDetails.duration.toDate}
-                />
-            ))}
-        </div>,
-
-        <div className="resume-screen-container" key="interests">
-            <ResumeHeading
-                heading="Cycling"
-                description="I average about 100 miles a week tearing up the streets of Houston"
-            />
-            <ResumeHeading
-                heading="Cooking"
-                description="I love Cooking all sorts of cuisine and love sharing meals with friends and family"
-            />
-            <ResumeHeading
-                heading="Table Top RPGs"
-                description="I play Dungeons and Dragons with my friends every week"
-            />
-        </div>
-    </div>
+      >
+        {programmingSkillsDetails.map((skill, index) => (
+          <div className="skill-parent" key={index}>
+            <div className="heading-bullet"></div>
+            <span>{skill.skill}</span>
+            <div className="skill-percentage">
+              <div
+                style={{ width: skill.ratingPercentage + "%" }}
+                className="active-percentage"
+              ></div>
+            </div>
+          </div>
+        ))}
+      </div>
+      ,
+      <div className="resume-screen-container" key="projects">
+        {projectDetails.map((projectDetails, index) => (
+          <ResumeHeading
+            key={index}
+            heading={projectDetails.title}
+            subHeading={projectDetails.subHeading}
+            description={projectDetails.description}
+            fromDate={projectDetails.duration.fromDate}
+            toDate={projectDetails.duration.toDate}
+          />
+        ))}
+      </div>
+      ,
+      <div className="resume-screen-container" key="interests">
+        <ResumeHeading
+          heading="Cycling"
+          description="I average about 100 miles a week tearing up the streets of Houston"
+        />
+        <ResumeHeading
+          heading="Cooking"
+          description="I love Cooking all sorts of cuisine and love sharing meals with friends and family"
+        />
+        <ResumeHeading
+          heading="Table Top RPGs"
+          description="I play Dungeons and Dragons with my friends every week"
+        />
+      </div>
+    </div>,
   ];
-  let fadeInScreenHandler = (screen) => {
-    if (screen.fadeScreen !== props.id) return;
-    Animations.animations.fadeInScreen(props.id);
-  };
-  const fadeInSubscription =
-    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
+  const handleCarousal = (index) => {
+    let offSetHeight = 360;
+    let newCarousaloffSet = {
+      style: { transform: "translateY(" + index * offSetHeight * -1 + "px)" },
+    };
+    setCarousalOffSetStyle(newCarousaloffSet);
+    setSelectedBulletIndex(index);
+  };
+
+  const getBullets = () => {
+    return resumeBullets.map((bullet, index) => (
+      <div
+        onClick={() => handleCarousal(index)}
+        className={
+          index === selectedBulletIndex ? "bullet selected-bullet" : "bullet"
+        }
+        key={index}
+      >
+        <img
+          src={require(`../../assets/Resume/${bullet.logoSrc}`)}
+          alt="bullet logos"
+          className="bullet-logo"
+        />
+      </div>
+    ));
+  };
+  const getResumeScreen = () => {
+    return (
+      <div style={carousalOffSetStyle.style} className="">
+        {resumeDetails.map((resumeDetail) => resumeDetail)}
+      </div>
+    );
+  };
   return (
     <div className="resume-container screen-container" id={props.id || ""}>
       <div className="resume-content">
@@ -185,6 +220,16 @@ export default function Resume(props) {
           title={"Resume"}
           subHeading={"Everything you want to know"}
         />
+        <div className="resume-card">
+          <div className="resume-bullets">
+            <div className="bullet-container">
+              <div className="bullet-icons">
+                <div className="bullets">{getBullets()}</div>
+              </div>
+            </div>
+                  </div>
+                  <div className="resume-bullet-details">{getResumeScreen()}</div>
+        </div>
       </div>
     </div>
   );
