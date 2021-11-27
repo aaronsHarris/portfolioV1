@@ -17,15 +17,19 @@
     font-family: Poppins ExtraBold;
     color: var(--white)
 }
-.header-options{
+.header-options {
     display: flex;
     align-items: center;
+}
+.header-options span{
+    padding: 10px;
 }
 .header-option{
     font-size: 16px;
     cursor: pointer;
     font-weight: 600;
 }
+
 .header-hamburger{
     display: none;
     color: var(--white)
