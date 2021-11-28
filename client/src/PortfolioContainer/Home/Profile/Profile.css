@@ -23,10 +23,11 @@
 }
 .profile-details-role h1 {
     font-size: 40px;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif
 }
 .primary-text {
-    color: (--white)
+    color: (--white);
+    font-size: 32px;
 }
 .highlighted-text {
     color: var(--dark-orange)
