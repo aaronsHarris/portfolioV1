@@ -2,18 +2,41 @@ import React from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-
+import "./Testimonial.css";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations.js";
 
 export default function Testimonial(props) {
-  let fadeInScreenHandler = (screen) => {
-    if (screen.fadeScreen !== props.id) return;
-    Animations.animations.fadeInScreen(props.id);
+//   let fadeInScreenHandler = (screen) => {
+//     if (screen.fadeScreen !== props.id) return;
+//     Animations.animations.fadeInScreen(props.id);
+//   };
+//   const fadeInSubscription =
+//     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+
+  const options = {
+    loop: true,
+    margin: 0,
+    nav: 0,
+    animationIn: "bounceInRight",
+    animationOut: "bounceOutRight",
+    dots: true,
+    autoplay: true,
+    smartSpeed: 1000,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 1,
+      },
+      1000: {
+        items: 3,
+      },
+    },
   };
-  const fadeInSubscription =
-    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+
   return (
     <div>
       <ScreenHeading
@@ -23,9 +46,11 @@ export default function Testimonial(props) {
       <section className="testimonial-section" id={props.id || ""}>
         <div className="container">
           <div className="row">
-                      <OwlCarousel className="owl-carousel" id="testimonial-carousel">
-                          
-                          
+            <OwlCarousel
+              className="owl-carousel"
+              id="testimonial-carousel"
+              {...options}
+            >
               <div className="col-lg-12">
                 <div className="testi-item">
                   <div className="testi-comment">
@@ -35,7 +60,7 @@ export default function Testimonial(props) {
                       He always has time to help and is a blast to work with.
                       <i className="fa fa-quote-right" />
                     </p>
-                    <ul className="list-unstyled">
+                    <ul className="stars list-unstyled">
                       <li>
                         <i className="fa fa-star" />
                       </li>
@@ -48,9 +73,7 @@ export default function Testimonial(props) {
                       <li>
                         <i className="fa fa-star-half" />
                       </li>
-                      <li>
-                        <i className="fa fa-star" />
-                      </li>
+                      
                     </ul>
                   </div>
                   <div className="client-info">
@@ -62,8 +85,7 @@ export default function Testimonial(props) {
                     <p>CEO TheCrick</p>
                   </div>
                 </div>
-                          </div>
-                          
+              </div>
 
               <div className="col-lg-12">
                 <div className="testi-item">
@@ -74,7 +96,7 @@ export default function Testimonial(props) {
                       He always has time to help and is a blast to work with.
                       <i className="fa fa-quote-right" />
                     </p>
-                    <ul className="list-unstyled">
+                    <ul className="stars list-unstyled">
                       <li>
                         <i className="fa fa-star" />
                       </li>
@@ -87,9 +109,7 @@ export default function Testimonial(props) {
                       <li>
                         <i className="fa fa-star-half" />
                       </li>
-                      <li>
-                        <i className="fa fa-star" />
-                      </li>
+                      
                     </ul>
                   </div>
                   <div className="client-info">
@@ -101,8 +121,7 @@ export default function Testimonial(props) {
                     <p>CEO TheCrick</p>
                   </div>
                 </div>
-                          </div>
-                          
+              </div>
 
               <div className="col-lg-12">
                 <div className="testi-item">
@@ -113,7 +132,7 @@ export default function Testimonial(props) {
                       He always has time to help and is a blast to work with.
                       <i className="fa fa-quote-right" />
                     </p>
-                    <ul className="list-unstyled">
+                    <ul className="stars list-unstyled">
                       <li>
                         <i className="fa fa-star" />
                       </li>
@@ -126,9 +145,7 @@ export default function Testimonial(props) {
                       <li>
                         <i className="fa fa-star-half" />
                       </li>
-                      <li>
-                        <i className="fa fa-star" />
-                      </li>
+                      
                     </ul>
                   </div>
                   <div className="client-info">
