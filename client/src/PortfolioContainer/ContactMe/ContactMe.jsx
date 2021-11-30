@@ -5,6 +5,7 @@ import load1 from "../../assets/ContactMe/load2.gif";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
+import './ContactMe.css'
 export default function ContactMe(props) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
