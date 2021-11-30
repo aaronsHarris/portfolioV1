@@ -1,39 +1,62 @@
 import { useState } from "react";
+import axios from "axios";
+import { toast, Toast } from "react-toastify";
+
 import Typical from "react-typical";
 import imgBack from "../../assets/ContactMe/mailz.jpeg";
 import load1 from "../../assets/ContactMe/load2.gif";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
-import './ContactMe.css'
+import "./ContactMe.css";
+
 export default function ContactMe(props) {
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [message, setMessage] = useState("")
-    const [banner, setBanner] = useState("")
-    const [bool, setBool] = useState(false)
-
-
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [banner, setBanner] = useState("");
+  const [bool, setBool] = useState(false);
 
   let fadeInScreenHandler = (screen) => {
     if (screen.fadeScreen !== props.id) return;
     Animations.animations.fadeInScreen(props.id);
   };
   const fadeInSubscription =
-      ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
-    
-    
-    const handleName = (e) => {
-        setName(e.target.value)
+    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleMessage = (e) => {
+    setMessage(e.target.value);
+  };
+  const submitForm = async (e) => {
+    e.preventDefault();
+    try {
+      let data = {
+        name,
+        email,
+        message,
+      };
+      setBool(true);
+      const res = await axios.post("/contact", data);
+      if (name.length === 0 || email.length === 0 || message.length === 0) {
+        setBanner(res.data.msg);
+        toast.error(res.data.msg);
+        setBool(false);
+      } else if (res.status === 200) {
+        setBanner(res.data.msg);
+        toast.success(res.data.msg);
+        setBool(false);
+      }
+    } catch (error) {
+      console.log(error);
     }
-    const handleEmail = (e) => {
-        setEmail(e.target.value)
-    }
-    const handleMessage = (e) => {
-        setMessage(e.target.value)
-    }
-            
+  };
+
   return (
     <div className="main-container" id={props.id || ""}>
       <ScreenHeading title={"Contact Me"} subHeading={"Keep in Touch"} />
@@ -41,7 +64,17 @@ export default function ContactMe(props) {
         <div className="col">
           <h2 className="title">
             {" "}
-            <Typical loop={Infinity} steps={["Gen In Touch 📧", 1000]} />
+            <Typical
+              loop={Infinity}
+              steps={[
+                "Get In Touch ✅ ",
+                1000,
+                "Send Me an Email 📧",
+                1000,
+                "Let's Work Together 🤝",
+                1000,
+              ]}
+            />
           </h2>
           <a href="https://github.com/aaronsHarris">
             <i className="fa fa-github"></i>
@@ -49,38 +82,38 @@ export default function ContactMe(props) {
           <a href="https://www.linkedin.com/in/aaron-harris-577867218/">
             <i className="fa fa-linkedin"></i>
           </a>
-              </div>
-              <div className="back-form">
-                  <div className="img-back">
-                      <h4>Send your Email here!</h4>
-                      <img src={imgBack} alt="email" />
-                  </div>
-                  <form action="">
-                      <p>{banner}</p>
-                      <label htmlFor="name">Name</label>
-                      <input type="text"
-                      onChange={handleName}
-                      value={name}
-                      />
+        </div>
+        <div className="back-form">
+          <div className="img-back">
+            <h4>Send your Email here!</h4>
+            <img src={imgBack} alt="email" />
+          </div>
+          <form onSubmit={submitForm}>
+            <p>{banner}</p>
+            <label htmlFor="name">Name</label>
+            <input type="text" onChange={handleName} value={name} />
 
-                      <label htmlFor="email">Email</label>
-                      <input type="email" onChange={handleEmail}
-                      value={email}/>
+            <label htmlFor="email">Email</label>
+            <input type="email" onChange={handleEmail} value={email} />
 
-                      <label htmlFor="message">Message</label>
-                      <textarea type="text" onChange={handleMessage}
-                      value={message}/>
+            <label htmlFor="message">Message</label>
+            <textarea type="text" onChange={handleMessage} value={message} />
 
-                      <div className="send-btn">
-                          <button type='submit'>
-                              send
-                              <i className='fa fa-paper-plane' />
-                              
-                          </button>
-                      </div>
-                  </form>
-
-              </div>
+            <div className="send-btn">
+              <button type="submit">
+                send
+                <i className="fa fa-paper-plane" />
+                {bool ? (
+                  <b className="load">
+                    <img src={load1} alt="loading" />
+                  </b>
+                ) : (
+                  ""
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
