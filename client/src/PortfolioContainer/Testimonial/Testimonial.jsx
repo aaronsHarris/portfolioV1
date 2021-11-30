@@ -8,12 +8,12 @@ import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations.js";
 
 export default function Testimonial(props) {
-//   let fadeInScreenHandler = (screen) => {
-//     if (screen.fadeScreen !== props.id) return;
-//     Animations.animations.fadeInScreen(props.id);
-//   };
-//   const fadeInSubscription =
-//     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+  let fadeInScreenHandler = (screen) => {
+    if (screen.fadeInScreen !== props.id) return;
+    Animations.animations.fadeInScreen(props.id);
+  };
+  const fadeInSubscription =
+    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
   const options = {
     loop: true,

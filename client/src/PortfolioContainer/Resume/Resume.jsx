@@ -2,14 +2,14 @@ import "./Resume.css";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export default function Resume(props) {
   const [selectedBulletIndex, setSelectedBulletIndex] = useState(0);
   const [carousalOffSetStyle, setCarousalOffSetStyle] = useState({});
 
   let fadeInScreenHandler = (screen) => {
-    if (screen.fadeScreen !== props.id) return;
+    if (screen.fadeInScreen !== props.id) return;
     Animations.animations.fadeInScreen(props.id);
   };
   const fadeInSubscription =
@@ -133,7 +133,7 @@ export default function Resume(props) {
             <br/>
       </div>
     </div>,
-
+        
     <div
       className="resume-screen-container programming-skills-container"
       key="programming-skills"
@@ -216,8 +216,16 @@ export default function Resume(props) {
       </div>
     );
   };
+
+  useEffect(() => {
+    return () => {
+      // unsubscribe the subscription
+      fadeInSubscription.unsubscribe()
+    };
+  }, [fadeInSubscription])
+
   return (
-    <div className="resume-container screen-container" id={props.id || ""}>
+    <div className="resume-container screen-container " id={props.id || ""}>
       <div className="resume-content">
         <ScreenHeading
           title={"Resume"}

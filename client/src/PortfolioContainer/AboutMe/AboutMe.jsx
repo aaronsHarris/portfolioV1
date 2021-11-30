@@ -9,7 +9,7 @@ export default function AboutMe(props) {
 
   
   let fadeInScreenHandler = (screen) => {
-    if (screen.fadeScreen !== props.id) return;
+    if (screen.fadeInScreen !== props.id) return;
     Animations.animations.fadeInScreen(props.id);
   };
   const fadeInSubscription =
@@ -40,7 +40,7 @@ export default function AboutMe(props) {
   };
 
   return (
-    <div className="about-me-container" id={props.id || ""}>
+    <div className="about-me-container  screen-container " id={props.id || ""}>
       <div className="about-me-parent">
         <ScreenHeading title={"About me"} subHeading={"Why Choose Me?"} />
         <div className="about-me-card">
