@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { toast, Toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import Typical from "react-typical";
 import imgBack from "../../assets/ContactMe/mailz.jpeg";
@@ -64,6 +64,14 @@ export default function ContactMe(props) {
     }
   };
 
+
+  useEffect(() => {
+    return () => {
+      /* UNSUBSCRIBE THE SUBSCRIPTIONS */
+      fadeInSubscription.unsubscribe();
+    };
+  }, [fadeInSubscription]);
+
   return (
     <div className="main-container fade-in" id={props.id || ""}>
       <ScreenHeading subHeading={"Lets Keep In Touch"} title={"Contact Me"} />
@@ -82,7 +90,7 @@ export default function ContactMe(props) {
         <div className="back-form">
           <div className="img-back">
             <h4>Send Your Email Here!</h4>
-            <img src={imgBack} alt="image not found" />
+            <img src={imgBack} alt="email" />
           </div>
           <form onSubmit={submitForm}>
             <p>{banner}</p>
@@ -101,7 +109,7 @@ export default function ContactMe(props) {
                 <i className="fa fa-paper-plane" />
                 {bool ? (
                   <b className="load">
-                    <img src={load1} alt="image not responding" />
+                    <img src={load1} alt="loading" />
                   </b>
                 ) : (
                   ""
@@ -120,7 +128,8 @@ export default function ContactMe(props) {
         {" "}
         <i className="fa fa-arrow-up"></i>
       </button>
-    </div>
+      </div>
+      <ScrollFooter />
     </div>
   );
 }
