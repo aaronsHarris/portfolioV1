@@ -59,11 +59,11 @@
 .profile-picture-background {
     height: 92%;
     width: 92%;
-    background-image: url(https://res.cloudinary.com/dbdrox2p9/image/upload/v1632193494/Gilear2_mkzk6j.png);
+    background-image: url(../../../assets/Home/me.jpg);
     background-size: cover;
     border-radius: 50%;
     background-repeat: no-repeat;
-    /* background-position: center; */
+    background-position: center;
     
 }
 .profile-picture-background:hover {

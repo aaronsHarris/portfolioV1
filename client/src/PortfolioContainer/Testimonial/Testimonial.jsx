@@ -8,20 +8,25 @@ import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations.js";
 import lady from '../../assets/Testimonial/lady.png'
 import shape from '../../assets/Testimonial/shape-bg.png'
+import man from '../../assets/Testimonial/man.png'
+import mike from '../../assets/Testimonial/mike.png'
+
+
 export default function Testimonial(props) {
   let fadeInScreenHandler = (screen) => {
     if (screen.fadeInScreen !== props.id) return;
     Animations.animations.fadeInScreen(props.id);
   };
+
   const fadeInSubscription =
     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
   const options = {
     loop: true,
     margin: 0,
-    nav: 0,
-    animationin: "bounceInRight",
-    animationout: "bounceOutRight",
+    nav: true,
+    animateIn: "bounceInRight",
+    animateOut: "bounceOutRight",
     dots: true,
     autoplay: true,
     smartSpeed: 1000,
@@ -42,9 +47,9 @@ export default function Testimonial(props) {
     <div>
       <ScreenHeading
         title={"Testimonial"}
-        subHeading={"What people are saying"}
+        subHeading={"What My Client Say About Me"}
       />
-      <section className="testimonial-section" id={props.id || ""}>
+      <section className="testimonial-section fade-in" id={props.id || ""}>
         <div className="container">
           <div className="row">
             <OwlCarousel
@@ -57,8 +62,9 @@ export default function Testimonial(props) {
                   <div className="testi-comment">
                     <p>
                       <i className="fa fa-quote-left" />
-                      Aaron is deffinately a great person to have on the team.
-                      He always has time to help and is a blast to work with.
+                      I patronized Ehizeex and when He delivered, I honestly
+                      fell in love with the project He is a very honest guy and
+                      he delivers ontime.
                       <i className="fa fa-quote-right" />
                     </p>
                     <ul className="stars list-unstyled">
@@ -72,18 +78,17 @@ export default function Testimonial(props) {
                         <i className="fa fa-star" />
                       </li>
                       <li>
-                        <i className="fa fa-star-half" />
+                        <i className="fa fa-star-half-alt" />
                       </li>
-                      
+                      <li>
+                        <i className="fa fa-star" />
+                      </li>
                     </ul>
                   </div>
                   <div className="client-info">
-                    <img
-                      src={lady}
-                      alt="client"
-                    />
-                    <h5>MoonShine</h5>
-                    <p>CEO TheCrick</p>
+                    <img src={lady} alt="no internet connection"></img>
+                    <h5>Daisy Dominic</h5>
+                    <p>CEO InansGlobal</p>
                   </div>
                 </div>
               </div>
@@ -93,8 +98,9 @@ export default function Testimonial(props) {
                   <div className="testi-comment">
                     <p>
                       <i className="fa fa-quote-left" />
-                      Aaron is deffinately a great person to have on the team.
-                      He always has time to help and is a blast to work with.
+                      It was nice hiring this guy for my e-commerce project.He
+                      delivered even more than i can imagine. I recommend him
+                      for you.
                       <i className="fa fa-quote-right" />
                     </p>
                     <ul className="stars list-unstyled">
@@ -108,29 +114,28 @@ export default function Testimonial(props) {
                         <i className="fa fa-star" />
                       </li>
                       <li>
-                        <i className="fa fa-star-half" />
+                        <i className="fa fa-star-half-alt" />
                       </li>
-                      
+                      <li>
+                        <i className="fa fa-star" />
+                      </li>
                     </ul>
                   </div>
                   <div className="client-info">
-                    <img
-                      src="https://res.cloudinary.com/dbdrox2p9/image/upload/v1632167870/moonshine_vnrcdl.png"
-                      alt="client"
-                    />
-                    <h5>MoonShine</h5>
-                    <p>CEO TheCrick</p>
+                    <img src={mike} alt="no internet connection"></img>
+                    <h5>Mikel</h5>
+                    <p>CEO MikeTech</p>
                   </div>
                 </div>
               </div>
-
               <div className="col-lg-12">
                 <div className="testi-item">
                   <div className="testi-comment">
                     <p>
                       <i className="fa fa-quote-left" />
-                      Aaron is deffinately a great person to have on the team.
-                      He always has time to help and is a blast to work with.
+                      When he delivered my job, my head spinned, it was so nice
+                      and he implemented every functionality i requested for.
+                      Thank you.
                       <i className="fa fa-quote-right" />
                     </p>
                     <ul className="stars list-unstyled">
@@ -144,18 +149,52 @@ export default function Testimonial(props) {
                         <i className="fa fa-star" />
                       </li>
                       <li>
-                        <i className="fa fa-star-half" />
+                        <i className="fa fa-star-half-alt" />
                       </li>
-                      
+                      <li>
+                        <i className="fa fa-star" />
+                      </li>
                     </ul>
                   </div>
                   <div className="client-info">
-                    <img
-                      src="https://res.cloudinary.com/dbdrox2p9/image/upload/v1632167870/moonshine_vnrcdl.png"
-                      alt="client"
-                    />
-                    <h5>MoonShine</h5>
-                    <p>CEO TheCrick</p>
+                    <img src={lady} alt="no internet connection"></img>
+                    <h5>Daisy Dominic</h5>
+                    <p>CEO InansGlobal</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-12">
+                <div className="testi-item">
+                  <div className="testi-comment">
+                    <p>
+                      <i className="fa fa-quote-left" />
+                      This guy is incredibly awesome, I hired him and when He
+                      delivered, I honestly fell in love with the project. He is
+                      indeed a great guy,
+                      <i className="fa fa-quote-right" />
+                    </p>
+                    <ul className="stars list-unstyled">
+                      <li>
+                        <i className="fa fa-star" />
+                      </li>
+                      <li>
+                        <i className="fa fa-star" />
+                      </li>
+                      <li>
+                        <i className="fa fa-star" />
+                      </li>
+                      <li>
+                        <i className="fa fa-star-half-alt" />
+                      </li>
+                      <li>
+                        <i className="fa fa-star" />
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="client-info">
+                    <img src={man} alt="no internet connection"></img>
+                    <h5>John Smith</h5>
+                    <p>Bnaker</p>
                   </div>
                 </div>
               </div>
@@ -164,7 +203,7 @@ export default function Testimonial(props) {
         </div>
       </section>
       <div className="footer-image">
-        <img src={shape} alt="shape" />
+        <img src={shape} alt="Phot0 not responding" />
       </div>
     </div>
   );

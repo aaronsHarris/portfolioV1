@@ -9,7 +9,7 @@ router.post("/contact", (req, res) => {
     data.email.length === 0 ||
     data.message.length === 0
   ) {
-    return res.json({ msg: "please fill out the fields" });
+    return res.json({ msg: "please fill out the fiels" });
   }
   let smtpTransporter = nodemailer.createTransport({
     service: "Gmail",

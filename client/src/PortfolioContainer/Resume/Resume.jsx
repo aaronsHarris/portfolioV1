@@ -236,7 +236,7 @@ export default function Resume(props) {
 
   return (
     <div
-      className="resume-container screen-container "
+      className="resume-container screen-container fade-in"
       id={props.id || ""}
     >
       <div className="resume-content">

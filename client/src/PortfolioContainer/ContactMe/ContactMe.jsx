@@ -8,21 +8,23 @@ import load1 from "../../assets/ContactMe/load2.gif";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
+import ScrollFooter from '../ScrollFooter/ScrollFooter'
 import "./ContactMe.css";
 
 export default function ContactMe(props) {
+  let fadeInScreenHandler = (screen) => {
+    if (screen.fadeInScreen !== props.id) return;
+    Animations.animations.fadeInScreen(props.id);
+  };
+
+  const fadeInSubscription =
+    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [banner, setBanner] = useState("");
   const [bool, setBool] = useState(false);
-
-  let fadeInScreenHandler = (screen) => {
-    if (screen.fadeInScreen !== props.id) return;
-    Animations.animations.fadeInScreen(props.id);
-  };
-  const fadeInSubscription =
-    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -33,6 +35,7 @@ export default function ContactMe(props) {
   const handleMessage = (e) => {
     setMessage(e.target.value);
   };
+  console.log(name);
   const submitForm = async (e) => {
     e.preventDefault();
     try {
@@ -42,7 +45,7 @@ export default function ContactMe(props) {
         message,
       };
       setBool(true);
-      const res = await axios.post("/contact", data);
+      const res = await axios.post(`/contact`, data);
       if (name.length === 0 || email.length === 0 || message.length === 0) {
         setBanner(res.data.msg);
         toast.error(res.data.msg);
@@ -51,9 +54,10 @@ export default function ContactMe(props) {
         setBanner(res.data.msg);
         toast.success(res.data.msg);
         setBool(false);
-        setName("")
-        setEmail("")
-        setMessage("")
+
+        setName("");
+        setEmail("");
+        setMessage("");
       }
     } catch (error) {
       console.log(error);
@@ -61,35 +65,24 @@ export default function ContactMe(props) {
   };
 
   return (
-    <div className="main-container" id={props.id || ""}>
-      <ScreenHeading title={"Contact Me"} subHeading={"Keep in Touch"} />
+    <div className="main-container fade-in" id={props.id || ""}>
+      <ScreenHeading subHeading={"Lets Keep In Touch"} title={"Contact Me"} />
       <div className="central-form">
         <div className="col">
           <h2 className="title">
-            {" "}
-            <Typical
-              loop={Infinity}
-              steps={[
-                "Get In Touch ✅ ",
-                1000,
-                "Send Me an Email 📧",
-                1000,
-                "Let's Work Together 🤝",
-                1000,
-              ]}
-            />
+            <Typical loop={Infinity} steps={["Get In Touch 📧", 1000]} />
           </h2>
           <a href="https://github.com/aaronsHarris">
-            <i className="fa fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/aaron-harris-577867218/">
-            <i className="fa fa-linkedin"></i>
-          </a>
+                <i className="fa fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/aaron-harris-577867218/">
+                <i className="fa fa-linkedin"></i>
+              </a>
         </div>
         <div className="back-form">
           <div className="img-back">
-            <h4>Send your Email here!</h4>
-            <img src={imgBack} alt="email" />
+            <h4>Send Your Email Here!</h4>
+            <img src={imgBack} alt="image not found" />
           </div>
           <form onSubmit={submitForm}>
             <p>{banner}</p>
@@ -108,7 +101,7 @@ export default function ContactMe(props) {
                 <i className="fa fa-paper-plane" />
                 {bool ? (
                   <b className="load">
-                    <img src={load1} alt="loading" />
+                    <img src={load1} alt="image not responding" />
                   </b>
                 ) : (
                   ""
@@ -118,6 +111,16 @@ export default function ContactMe(props) {
           </form>
         </div>
       </div>
+      <div className="scroll-container">
+      <button
+        className="btn-scroll"
+        onClick={() => ScrollService.scrollHandler.scrollToHome()}
+        
+      >
+        {" "}
+        <i className="fa fa-arrow-up"></i>
+      </button>
+    </div>
     </div>
   );
 }
