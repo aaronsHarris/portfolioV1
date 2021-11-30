@@ -15,6 +15,7 @@ export default function AboutMe(props) {
   const fadeInSubscription =
     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
+
   const SCREEN_CONSTANTS = {
     description:
       "I am a full stack developer that wants to help create the future of tech. As a Chef and business manager in the hospitality industry I always thrived in the fiery pace of the kitchen or the customer satisfaction of the dining room. I love pushing myself in my personal life with cycling and being creative through writing or comedy. As a software engineer I will consistently bring my fire and passion for the customer and innovative products to my work",

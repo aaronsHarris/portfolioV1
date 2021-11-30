@@ -6,38 +6,40 @@ import { useState,useEffect } from "react";
 
 export default function Resume(props) {
   const [selectedBulletIndex, setSelectedBulletIndex] = useState(0);
-  const [carousalOffSetStyle, setCarousalOffSetStyle] = useState({});
+  const [carousalOffsetStyle, setCarousalOffsetStyle] = useState({});
 
   let fadeInScreenHandler = (screen) => {
     if (screen.fadeInScreen !== props.id) return;
+
     Animations.animations.fadeInScreen(props.id);
   };
   const fadeInSubscription =
     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
-  const ResumeHeading = (props) => {
-    return (
-      <div className="resume-heading">
-        <div className="resume-main-heading">
-          <div className="heading-bullet"></div>
-          <span>{props.heading ? props.heading : ""}</span>
-          {props.fromDate && props.toDate ? (
-            <div className="heading-date">
-              {props.fromDate + "-" + props.toDate}
+  
+      const ResumeHeading = (props) => {
+        return (
+          <div className="resume-heading">
+            <div className="resume-main-heading">
+              <div className="heading-bullet"></div>
+              <span>{props.heading ? props.heading : ""}</span>
+              {props.fromDate && props.toDate ? (
+                <div className="heading-date">
+                  {props.fromDate + "-" + props.toDate}
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div>
-          ) : (
-            <div></div>
-          )}
-        </div>
-        <div className="resume-sub-heading">
-          <span>{props.subHeading ? props.subHeading : ""}</span>
-        </div>
-        <div className="resume-heading-description">
-          <span>{props.description ? props.description : ""}</span>
-        </div>
-      </div>
-    );
-  };
+            <div className="resume-sub-heading">
+              <span>{props.subHeading ? props.subHeading : ""}</span>
+            </div>
+            <div className="resume-heading-description">
+              <span>{props.description ? props.description : ""}</span>
+            </div>
+          </div>
+        );
+      };
   const resumeBullets = [
     { label: "Education", logoSrc: "education.svg" },
     { label: "Work History", logoSrc: "work-history.svg" },
@@ -82,6 +84,7 @@ export default function Resume(props) {
   ];
 
   const resumeDetails = [
+    //education
     <div className="resume-screen-container" key="education">
       <ResumeHeading
         heading={"General Assembly"}
@@ -102,8 +105,9 @@ export default function Resume(props) {
         toDate={"May 2009"}
       />
     </div>,
-
+    //workHistoy
     <div className="resume-screen-container" key="work-experience">
+      <div className="experience-container">
       <ResumeHeading
         heading={"General Assembly"}
         subHeading={"Software Engineering Fellow"}
@@ -131,27 +135,29 @@ export default function Resume(props) {
           awesome, supportive network for our future coding journey.
             </span>
             <br/>
-      </div>
+        </div>
+        </div>
     </div>,
         
-    <div
-      className="resume-screen-container programming-skills-container"
-      key="programming-skills"
-    >
-      {programmingSkillsDetails.map((skill, index) => (
-        <div className="skill-parent" key={index}>
-          <div className="heading-bullet"></div>
-          <span>{skill.skill}</span>
-          <div className="skill-percentage">
-            <div
-              style={{ width: skill.ratingPercentage + "%" }}
-              className="active-percentage-bar"
-            ></div>
+        <div
+        className="resume-screen-container programming-skills-container"
+        key="programming-skills"
+      >
+        {programmingSkillsDetails.map((skill, index) => (
+          <div className="skill-parent" key={index}>
+            <div className="heading-bullet"></div>
+            <span>{skill.skill}</span>
+            <div className="skill-percentage">
+              <div
+                style={{ width: skill.ratingPercentage + "%" }}
+                className="active-percentage-bar"
+              ></div>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>,
+        ))}
+      </div>,
 
+    //projects
     <div className="resume-screen-container" key="projects">
       {projectDetails.map((projectDetails, index) => (
         <ResumeHeading
@@ -181,11 +187,13 @@ export default function Resume(props) {
   ];
 
   const handleCarousal = (index) => {
-    let offSetHeight = 360;
-    let newCarousaloffSet = {
-      style: { transform: "translateY(" + index * offSetHeight * -1 + "px)" },
+    let offsetHeight = 360;
+
+    let newCarousalOffset = {
+      style: { transform: "translateY(" + index * offsetHeight * -1 + "px)" },
     };
-    setCarousalOffSetStyle(newCarousaloffSet);
+
+    setCarousalOffsetStyle(newCarousalOffset);
     setSelectedBulletIndex(index);
   };
 
@@ -201,47 +209,49 @@ export default function Resume(props) {
         <img
           className="bullet-logo"
           src={require(`../../assets/Resume/${bullet.logoSrc}`).default}
-          alt="bullet logo"
+          alt="B"
         />
         <span className="bullet-label">{bullet.label}</span>
       </div>
     ));
   };
-  const getResumeScreen = () => {
+
+  const getResumeScreens = () => {
     return (
-        <div
-            style={carousalOffSetStyle.style}
-            className="resume-details-carousal">
-        {resumeDetails.map((resumeDetail) => resumeDetail)}
+      <div
+        style={carousalOffsetStyle.style}
+        className="resume-details-carousal"
+      >
+        {resumeDetails.map((ResumeDetail) => ResumeDetail)}
       </div>
     );
   };
 
   useEffect(() => {
     return () => {
-      // unsubscribe the subscription
-      fadeInSubscription.unsubscribe()
+      /* UNSUBSCRIBE THE SUBSCRIPTIONS */
+      fadeInSubscription.unsubscribe();
     };
-  }, [fadeInSubscription])
+  }, [fadeInSubscription]);
 
   return (
-    <div className="resume-container screen-container " id={props.id || ""}>
+    <div
+      className="resume-container screen-container "
+      id={props.id || ""}
+    >
       <div className="resume-content">
-        <ScreenHeading
-          title={"Resume"}
-          subHeading={"Everything you want to know"}
-        />
+        <ScreenHeading title={"Resume"} subHeading={"My formal Bio Details"} />
         <div className="resume-card">
           <div className="resume-bullets">
             <div className="bullet-container">
-              <div className="bullet-icons">
-                <div className="bullets">{getBullets()}</div>
-              </div>
+              <div className="bullet-icons"></div>
+              <div className="bullets">{getBullets()}</div>
             </div>
           </div>
-          <div className="resume-bullet-details">{getResumeScreen()}</div>
+
+          <div className="resume-bullet-details">{getResumeScreens()}</div>
         </div>
       </div>
     </div>
   );
-}
+};
