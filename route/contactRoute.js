@@ -5,11 +5,11 @@ router.post("/contact", (req, res) => {
   let data = req.body;
 
   if (
-    dat.name.length === 0 ||
+    data.name.length === 0 ||
     data.email.length === 0 ||
     data.message.length === 0
   ) {
-    return res.json({ msg: "please fill out the form" });
+    return res.json({ msg: "please fill out the fields" });
   }
   let smtpTransporter = nodemailer.createTransport({
     service: "Gmail",
@@ -37,7 +37,7 @@ router.post("/contact", (req, res) => {
   smtpTransporter.sendMail(mailOptions, (error) => {
     try {
       if (error)
-        return res.status(400).json({ msg: "please fill out the form" });
+        return res.status(400).json({ msg: "please fill out all fields" });
       res.status(200).json({ msg: "Thanks for contacting Aaron! " });
     } catch (error) {
       if (error) return res.status(500).json({ msg: "There is an error" });

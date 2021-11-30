@@ -6,7 +6,8 @@ import "./Testimonial.css";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations.js";
-
+import lady from '../../assets/Testimonial/lady.png'
+import shape from '../../assets/Testimonial/shape-bg.png'
 export default function Testimonial(props) {
   let fadeInScreenHandler = (screen) => {
     if (screen.fadeInScreen !== props.id) return;
@@ -78,7 +79,7 @@ export default function Testimonial(props) {
                   </div>
                   <div className="client-info">
                     <img
-                      src="https://res.cloudinary.com/dbdrox2p9/image/upload/v1632167870/moonshine_vnrcdl.png"
+                      src={lady}
                       alt="client"
                     />
                     <h5>MoonShine</h5>
@@ -162,6 +163,9 @@ export default function Testimonial(props) {
           </div>
         </div>
       </section>
+      <div className="footer-image">
+        <img src={shape} alt="shape" />
+      </div>
     </div>
   );
 }
