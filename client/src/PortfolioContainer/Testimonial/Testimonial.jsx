@@ -12,7 +12,10 @@ import jess from '../../assets/Testimonial/jessica.jpeg'
 import tyler from '../../assets/Testimonial/ty.jpeg'
 import shape from '../../assets/Testimonial/shape-bg.png'
 
+
+
 export default function Testimonial(props) {
+
   let fadeInScreenHandler = (screen) => {
     if (screen.fadeInScreen !== props.id) return;
     Animations.animations.fadeInScreen(props.id);
@@ -21,27 +24,31 @@ export default function Testimonial(props) {
   const fadeInSubscription =
     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
-  const options = {
-    loop: true,
-    margin: 0,
-    nav: true,
-    animateIn: "bounceInRight",
-    animateOut: "bounceOutRight",
-    dots: true,
-    autoplay: true,
-    smartSpeed: 1000,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      768: {
-        items: 1,
-      },
-      1000: {
-        items: 3,
-      },
-    },
-  };
+  
+  // const slider = tns({
+  //   container = 'container'
+  // })
+  // const options = {
+  //   loop: true,
+  //   margin: 0,
+  //   nav: true,
+  //   animateIn: "bounceInRight",
+  //   animateOut: "bounceOutRight",
+  //   dots: true,
+  //   autoplay: true,
+  //   smartSpeed: 1000,
+  //   responsive: {
+  //     0: {
+  //       items: 1,
+  //     },
+  //     768: {
+  //       items: 1,
+  //     },
+  //     1000: {
+  //       items: 3,
+  //     },
+  //   },
+  // };
   useEffect(() => {
     return () => {
       /* UNSUBSCRIBE THE SUBSCRIPTIONS */
@@ -61,7 +68,7 @@ export default function Testimonial(props) {
             <OwlCarousel
               className="owl-carousel"
               id="testimonial-carousel"
-              {...options}
+              // {...options}
             >
               <div className="col-lg-12">
                 <div className="testi-item">
