@@ -21,3 +21,8 @@
         align-items: flex-end;
     }
 }
+@media only screen and (max-width: 768px){
+    .footer-parent{
+        display: none;
+    }
+}

@@ -1,8 +1,8 @@
 import React from 'react'
-import './Footer.css'
+import './homeFooter.css'
 
 
-export default function Footer() {
+export default function HomeFooter() {
     return (
         <div className='footer-container'>
             <div className="footer-parent">

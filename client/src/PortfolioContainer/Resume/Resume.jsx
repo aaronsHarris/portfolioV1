@@ -102,7 +102,7 @@ export default function Resume(props) {
     <div className="resume-screen-container" key="education">
       <ResumeHeading
         heading={"General Assembly"}
-        subHeading={"Certificate of Completion"}
+        subHeading={"Software Engineering Certificate of Completion"}
         fromDate={"Aug 2021"}
         toDate={"Nov 2021"}
       />
