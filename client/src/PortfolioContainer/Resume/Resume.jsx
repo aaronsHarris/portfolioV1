@@ -16,6 +16,7 @@ export default function Resume(props) {
   const fadeInSubscription =
     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
+  /* REUSABLE MINOR COMPONENTS */
   const ResumeHeading = (props) => {
     return (
       <div className="resume-heading">
@@ -27,7 +28,15 @@ export default function Resume(props) {
               {props.fromDate + "-" + props.toDate}
             </div>
           ) : (
-            <div></div>
+            <div>
+              {props.link ? (
+                <a className="heading-date" href={props.link} target="_blank">
+                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              ) : (
+                <div></div>
+              )}
+            </div>
           )}
         </div>
         <div className="resume-sub-heading">
@@ -36,25 +45,20 @@ export default function Resume(props) {
         <div className="resume-heading-description">
           <span>{props.description ? props.description : ""}</span>
         </div>
-        
-        {props.link ? (
-            <a className="link"href={props.link} target="_blank">live site</a>
-              
-            
-          ) : (
-            <div></div>
-          )}
       </div>
     );
   };
+
+  /* STATIC RESUME DATA FOR THE LABELS*/
   const resumeBullets = [
     { label: "Education", logoSrc: "education.svg" },
-    { label: "Recent Work", logoSrc: "work-history.svg" },
+    { label: "Work History", logoSrc: "work-history.svg" },
     { label: "Programming Skills", logoSrc: "programming-skills.svg" },
     { label: "Projects", logoSrc: "projects.svg" },
     { label: "Interests", logoSrc: "interests.svg" },
   ];
 
+  //here we have
   const programmingSkillsDetails = [
     { skill: "JavaScript", ratingPercentage: 85 },
     { skill: "React JS", ratingPercentage: 85 },
@@ -63,15 +67,16 @@ export default function Resume(props) {
     { skill: "Node.js", ratingPercentage: 75 },
     { skill: "HTMl", ratingPercentage: 85 },
     { skill: "CSS", ratingPercentage: 90 },
-    { skill: "Ruby on Rails", ratingPercentage: 70 },
+    { skill: "Ruby", ratingPercentage: 70 },
+    { skill: "Rails", ratingPercentage: 70 },
   ];
 
-  const projectDetails = [
+  const projectsDetails = [
     {
-      title: "MyHero Character Creation App",
+      title: "MyHero Character Creater",
       duration: { fromDate: "", toDate: "" },
       description:
-        "MyHero is a creator creation app where users create a custom character for their next table top role play game. Featuring Airtable as a database, image upload, and responsive design.",
+        "MyHero is a creator creation app where users create a custom character for their next table top role play game.",
       subHeading: "Technologies used: React JS, Airtable, Tailwind CSS",
       link: "https://myheroapp.netlify.app/",
     },
@@ -79,7 +84,7 @@ export default function Resume(props) {
       title: "DevUp Ecommerce Wesite",
       duration: { fromDate: "", toDate: "" },
       description:
-        "DevUp is curated inventory site to find your perfect at Home Office setup. A Full stack app featuring user auth, full CRUD, sorting, wishlist, image upload, and responsive design. This was a team project with credit to Jessica Choe, Tyler Washington, & Benjamin Jeanb",
+        "DevUp is an Ecommerce site to find your perfect at Home Office setup.",
       subHeading: "Technologies used: MERN Stack, Tailwind CSS",
       link: "https://devupapp.netlify.app/",
     },
@@ -87,14 +92,13 @@ export default function Resume(props) {
       title: "UpCoook Recipe App",
       duration: { fromDate: "", toDate: "" },
       description:
-        "Upcook is a Full Stack recipe app where users can quickly find recipes and cooking knowledge and get cooking. Featuring user auth, Full CRud, image upload, and responsive design",
-      subHeading: "Technologies used: React JS, Ruby on Rails, Tailwind CSS",
+        "Full Stack recipe app where users can quickly find recipes and cooking knowledge.",
+      subHeading: "Featuring: React JS, Ruby on Rails, Framer Motion",
       link: "https://upcook.netlify.app/",
     },
   ];
 
   const resumeDetails = [
-    //education
     <div className="resume-screen-container" key="education">
       <ResumeHeading
         heading={"General Assembly"}
@@ -115,12 +119,13 @@ export default function Resume(props) {
         toDate={"May 2009"}
       />
     </div>,
-    //workHistoy
+
+    /* WORK EXPERIENCE */
     <div className="resume-screen-container" key="work-experience">
       <div className="experience-container">
         <ResumeHeading
           heading={"General Assembly"}
-          subHeading={"Software Engineering Fellow"}
+          subHeading={"FULL STACK DEVELOPER FELLOW"}
           fromDate={"Aug 2021"}
           toDate={"Nov 2021"}
         />
@@ -149,6 +154,7 @@ export default function Resume(props) {
       </div>
     </div>,
 
+    /* PROGRAMMING SKILLS */
     <div
       className="resume-screen-container programming-skills-container"
       key="programming-skills"
@@ -167,34 +173,37 @@ export default function Resume(props) {
       ))}
     </div>,
 
-    //projects
+    /* PROJECTS */
     <div className="resume-screen-container" key="projects">
-      {projectDetails.map((projectDetails, index) => (
+      {projectsDetails.map((projectsDetails, index) => (
         <ResumeHeading
           key={index}
-          heading={projectDetails.title}
-          subHeading={projectDetails.subHeading}
-          description={projectDetails.description}
-          fromDate={projectDetails.duration.fromDate}
-          toDate={projectDetails.duration.toDate}
-          link={projectDetails.link}
+          heading={projectsDetails.title}
+          subHeading={projectsDetails.subHeading}
+          description={projectsDetails.description}
+          fromDate={projectsDetails.duration.fromDate}
+          toDate={projectsDetails.duration.toDate}
+          link={projectsDetails.link}
         />
       ))}
     </div>,
+
+    /* Interests */
     <div className="resume-screen-container" key="interests">
-      <ResumeHeading
-        heading="Cycling"
-        description="I average about 100 miles a week tearing up the streets of Houston"
-      />
-      <ResumeHeading
-        heading="Cooking"
-        description="I love Cooking all sorts of cuisine and love sharing meals with friends and family"
-      />
-      <ResumeHeading
-        heading="Table Top RPGs"
-        description="I play Dungeons and Dragons with my friends every week"
-      />
-    </div>,
+    <ResumeHeading
+      heading="Cycling"
+      description="I average about 100 miles a week tearing up the streets of Houston"
+    />
+    <ResumeHeading
+      heading="Cooking"
+      description="I love Cooking all sorts of cuisine and love sharing meals with friends and family"
+    />
+    <ResumeHeading
+      heading="Table Top RPGs"
+      description="I play Dungeons and Dragons with my friends every week"
+    />
+  </div>,
+
   ];
 
   const handleCarousal = (index) => {

@@ -55,7 +55,7 @@ export default function Profile() {
                 href="../../assets/Current resume dec19 (1).pdf"
                 download="../../assets/Current resume dec19 (1).pdf"
               >
-                <button className="btn highlighted-btn">Get Resume</button>
+                <button className="btn highlighted-btn">Get Resume <i className="fa fa-arrow-down"></i></button>
               </a>
             </div>
           </div>

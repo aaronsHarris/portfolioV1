@@ -79,7 +79,18 @@
 .colz .colz-icon i:hover{
     transform: scale(1.5);
 }
-
+.btn i {
+    -webkit-animation: mover 0.5s infinite alternate;
+    animation: mover 0.5s infinite alternate;
+  }
+  @keyframes mover {
+    100% {
+      transform: translateY(-5px);
+    }
+    0% {
+      transform: translateX(0px);
+    }
+  }
 @media screen and (max-width: 1100px) {
     .profile-picture {
         margin: 0 0px 0 80px;
