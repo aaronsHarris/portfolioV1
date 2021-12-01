@@ -97,4 +97,8 @@
     .footer-image{
         display: none;
     }
+    .testimonial-section .client-info{
+      display: flex;
+      flex-direction: column;
+    }
 }
