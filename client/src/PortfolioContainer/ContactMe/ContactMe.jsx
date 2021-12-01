@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 // import axios from "axios";
 // import { toast } from "react-toastify";
 
@@ -8,17 +8,19 @@ import imgBack from "../../assets/ContactMe/mailz.jpeg";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
-import ScrollFooter from '../ScrollFooter/ScrollFooter'
+
 import "./ContactMe.css";
+import Footer from "../Footer/Footer";
 
 export default function ContactMe(props) {
+
   let fadeInScreenHandler = (screen) => {
     if (screen.fadeInScreen !== props.id) return;
     Animations.animations.fadeInScreen(props.id);
   };
 
-  // const fadeInSubscription =
-  //   ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+  const fadeInSubscription =
+    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
@@ -64,15 +66,15 @@ export default function ContactMe(props) {
   //   }
   // };
 
-  // useEffect(() => {
-  //   return () => {
-  //     /* UNSUBSCRIBE THE SUBSCRIPTIONS */
-  //     fadeInSubscription.unsubscribe();
-  //   };
-  // }, [fadeInSubscription]);
+  useEffect(() => {
+    return () => {
+      /* UNSUBSCRIBE THE SUBSCRIPTIONS */
+      fadeInSubscription.unsubscribe();
+    };
+  }, [fadeInSubscription]);
 
   return (
-    <div className="main-container " id={props.id || ""}>
+    <div className="main-container fade-in" id={props.id || ""}>
       <ScreenHeading subHeading={"Lets Keep In Touch"} title={"Contact Me"} />
       <div className="central-form">
         <div className="col">
@@ -100,7 +102,7 @@ export default function ContactMe(props) {
               <i className="fa fa-linkedin"></i>
             </a>
             <a href="mailto:aaronsharris@gmail.com">
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <i className="fa fa-envelope" aria-hidden="true"></i>
             </a>
             <img src={imgBack} alt="email" />
           </div>
@@ -131,15 +133,8 @@ export default function ContactMe(props) {
           </form> */}
         </div>
       </div>
-      <div className="scroll-container">
-        <button
-          className="btn-scroll"
-          onClick={() => ScrollService.scrollHandler.scrollToHome()}
-        >
-          {" "}
-          <i className="fa fa-arrow-up"></i>
-        </button>
+      
+          <Footer />
       </div>
-    </div>
   );
 }
