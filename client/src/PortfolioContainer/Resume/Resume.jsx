@@ -30,7 +30,7 @@ export default function Resume(props) {
           ) : (
             <div>
               {props.link ? (
-                <a className="heading-date" href={props.link} target="_blank">
+                <a className="heading-date" href={props.link} target="_blank" rel="noreferrer">
                   <i className="fa fa-arrow-right" aria-hidden="true"></i>
                 </a>
               ) : (
