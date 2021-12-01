@@ -13,8 +13,9 @@
   border-radius: 12px;
   margin: 0 auto;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   background-color: #1f2235;
+  text-align: center;
 }
 
 .central-form h2 {
@@ -22,11 +23,13 @@
   font-family: "Poppins Bold";
   letter-spacing: 0.2rem;
   margin-bottom: 20px;
+
 }
 
 .back-form {
   max-width: 380px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .back-form .img-back {
@@ -56,12 +59,12 @@
   justify-content: center;
   flex-direction: column;
   margin-top: -52px;
-  
   align-items: center;
   opacity: 0.9;
   background-color: white;
   box-shadow: 0 0px 20px -2px #1f2235;
   border-radius: 12px;
+  
 }
 
 form p {
@@ -130,12 +133,14 @@ button .load img {
   width: 60px;
   color: green;
 }
-.col i {
+
+ .img-back i {
   padding: 7px;
   color: #fff;
   font-size: 30px;
+  
 }
-.col i:hover {
+ .img-back i:hover {
   transform: scale(1.5);
 }
 

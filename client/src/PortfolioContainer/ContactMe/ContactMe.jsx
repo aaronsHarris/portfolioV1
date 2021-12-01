@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
+// import { toast } from "react-toastify";
 
 import Typical from "react-typical";
 import imgBack from "../../assets/ContactMe/mailz.jpeg";
-import load1 from "../../assets/ContactMe/load2.gif";
+// import load1 from "../../assets/ContactMe/load2.gif";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
@@ -17,82 +17,94 @@ export default function ContactMe(props) {
     Animations.animations.fadeInScreen(props.id);
   };
 
-  const fadeInSubscription =
-    ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+  // const fadeInSubscription =
+  //   ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [banner, setBanner] = useState("");
-  const [bool, setBool] = useState(false);
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [message, setMessage] = useState("");
+  // const [banner, setBanner] = useState("");
+  // const [bool, setBool] = useState(false);
 
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleMessage = (e) => {
-    setMessage(e.target.value);
-  };
-  console.log(name);
-  const submitForm = async (e) => {
-    e.preventDefault();
-    try {
-      let data = {
-        name,
-        email,
-        message,
-      };
-      setBool(true);
-      const res = await axios.post(`/contact`, data);
-      if (name.length === 0 || email.length === 0 || message.length === 0) {
-        setBanner(res.data.msg);
-        toast.error(res.data.msg);
-        setBool(false);
-      } else if (res.status === 200) {
-        setBanner(res.data.msg);
-        toast.success(res.data.msg);
-        setBool(false);
+  // const handleName = (e) => {
+  //   setName(e.target.value);
+  // };
+  // const handleEmail = (e) => {
+  //   setEmail(e.target.value);
+  // };
+  // const handleMessage = (e) => {
+  //   setMessage(e.target.value);
+  // };
+  // console.log(name);
+  // const submitForm = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     let data = {
+  //       name,
+  //       email,
+  //       message,
+  //     };
+  //     setBool(true);
+  //     const res = await axios.post(`/contact`, data);
+  //     if (name.length === 0 || email.length === 0 || message.length === 0) {
+  //       setBanner(res.data.msg);
+  //       toast.error(res.data.msg);
+  //       setBool(false);
+  //     } else if (res.status === 200) {
+  //       setBanner(res.data.msg);
+  //       toast.success(res.data.msg);
+  //       setBool(false);
 
-        setName("");
-        setEmail("");
-        setMessage("");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //       setName("");
+  //       setEmail("");
+  //       setMessage("");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-
-  useEffect(() => {
-    return () => {
-      /* UNSUBSCRIBE THE SUBSCRIPTIONS */
-      fadeInSubscription.unsubscribe();
-    };
-  }, [fadeInSubscription]);
+  // useEffect(() => {
+  //   return () => {
+  //     /* UNSUBSCRIBE THE SUBSCRIPTIONS */
+  //     fadeInSubscription.unsubscribe();
+  //   };
+  // }, [fadeInSubscription]);
 
   return (
-    <div className="main-container fade-in" id={props.id || ""}>
+    <div className="main-container " id={props.id || ""}>
       <ScreenHeading subHeading={"Lets Keep In Touch"} title={"Contact Me"} />
       <div className="central-form">
         <div className="col">
           <h2 className="title">
-            <Typical loop={Infinity} steps={["Get In Touch 📧", 1000]} />
+            <Typical
+              loop={Infinity}
+              steps={[
+                "Get In Touch 📧",
+                1000,
+                "Connect with Me ✅",
+                1000,
+                "Let's Work Together 🤝",
+                1000,
+              ]}
+            />
           </h2>
-          <a href="https://github.com/aaronsHarris">
-                <i className="fa fa-github"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/aaron-harris-577867218/">
-                <i className="fa fa-linkedin"></i>
-              </a>
         </div>
         <div className="back-form">
           <div className="img-back">
-            <h4>Send Your Email Here!</h4>
+            <h4>Message Me Here!</h4>
+            <a href="https://github.com/aaronsHarris">
+              <i className="fa fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/aaron-harris-577867218/">
+              <i className="fa fa-linkedin"></i>
+            </a>
+            <a href="mailto:aaronsharris@gmail.com">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </a>
             <img src={imgBack} alt="email" />
           </div>
-          <form onSubmit={submitForm}>
+          {/* <form onSubmit={submitForm}>
             <p>{banner}</p>
             <label htmlFor="name">Name</label>
             <input type="text" onChange={handleName} value={name} />
@@ -116,20 +128,18 @@ export default function ContactMe(props) {
                 )}
               </button>
             </div>
-          </form>
+          </form> */}
         </div>
       </div>
       <div className="scroll-container">
-      <button
-        className="btn-scroll"
-        onClick={() => ScrollService.scrollHandler.scrollToHome()}
-        
-      >
-        {" "}
-        <i className="fa fa-arrow-up"></i>
-      </button>
+        <button
+          className="btn-scroll"
+          onClick={() => ScrollService.scrollHandler.scrollToHome()}
+        >
+          {" "}
+          <i className="fa fa-arrow-up"></i>
+        </button>
       </div>
-      <ScrollFooter />
     </div>
   );
 }

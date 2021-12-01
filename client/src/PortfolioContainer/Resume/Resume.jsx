@@ -2,7 +2,7 @@ import "./Resume.css";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Resume(props) {
   const [selectedBulletIndex, setSelectedBulletIndex] = useState(0);
@@ -16,33 +16,40 @@ export default function Resume(props) {
   const fadeInSubscription =
     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
-  
-      const ResumeHeading = (props) => {
-        return (
-          <div className="resume-heading">
-            <div className="resume-main-heading">
-              <div className="heading-bullet"></div>
-              <span>{props.heading ? props.heading : ""}</span>
-              {props.fromDate && props.toDate ? (
-                <div className="heading-date">
-                  {props.fromDate + "-" + props.toDate}
-                </div>
-              ) : (
-                <div></div>
-              )}
+  const ResumeHeading = (props) => {
+    return (
+      <div className="resume-heading">
+        <div className="resume-main-heading">
+          <div className="heading-bullet"></div>
+          <span>{props.heading ? props.heading : ""}</span>
+          {props.fromDate && props.toDate ? (
+            <div className="heading-date">
+              {props.fromDate + "-" + props.toDate}
             </div>
-            <div className="resume-sub-heading">
-              <span>{props.subHeading ? props.subHeading : ""}</span>
-            </div>
-            <div className="resume-heading-description">
-              <span>{props.description ? props.description : ""}</span>
-            </div>
-          </div>
-        );
-      };
+          ) : (
+            <div></div>
+          )}
+        </div>
+        <div className="resume-sub-heading">
+          <span>{props.subHeading ? props.subHeading : ""}</span>
+        </div>
+        <div className="resume-heading-description">
+          <span>{props.description ? props.description : ""}</span>
+        </div>
+        
+        {props.link ? (
+            <a className="link"href={props.link} target="_blank">live site</a>
+              
+            
+          ) : (
+            <div></div>
+          )}
+      </div>
+    );
+  };
   const resumeBullets = [
     { label: "Education", logoSrc: "education.svg" },
-    { label: "Work History", logoSrc: "work-history.svg" },
+    { label: "Recent Work", logoSrc: "work-history.svg" },
     { label: "Programming Skills", logoSrc: "programming-skills.svg" },
     { label: "Projects", logoSrc: "projects.svg" },
     { label: "Interests", logoSrc: "interests.svg" },
@@ -62,24 +69,27 @@ export default function Resume(props) {
   const projectDetails = [
     {
       title: "MyHero Character Creation App",
-      duration: { fromDate: "2021", toDate: "2021" },
+      duration: { fromDate: "", toDate: "" },
       description:
         "MyHero is a creator creation app where users create a custom character for their next table top role play game. Featuring Airtable as a database, image upload, and responsive design.",
       subHeading: "Technologies used: React JS, Airtable, Tailwind CSS",
+      link: "https://myheroapp.netlify.app/",
     },
     {
       title: "DevUp Ecommerce Wesite",
-      duration: { fromDate: "2021", toDate: "2021" },
+      duration: { fromDate: "", toDate: "" },
       description:
         "DevUp is curated inventory site to find your perfect at Home Office setup. A Full stack app featuring user auth, full CRUD, sorting, wishlist, image upload, and responsive design. This was a team project with credit to Jessica Choe, Tyler Washington, & Benjamin Jeanb",
       subHeading: "Technologies used: MERN Stack, Tailwind CSS",
+      link: "https://devupapp.netlify.app/",
     },
     {
       title: "UpCoook Recipe App",
-      duration: { fromDate: "2021", toDate: "2021" },
+      duration: { fromDate: "", toDate: "" },
       description:
         "Upcook is a Full Stack recipe app where users can quickly find recipes and cooking knowledge and get cooking. Featuring user auth, Full CRud, image upload, and responsive design",
       subHeading: "Technologies used: React JS, Ruby on Rails, Tailwind CSS",
+      link: "https://upcook.netlify.app/",
     },
   ];
 
@@ -108,54 +118,54 @@ export default function Resume(props) {
     //workHistoy
     <div className="resume-screen-container" key="work-experience">
       <div className="experience-container">
-      <ResumeHeading
-        heading={"General Assembly"}
-        subHeading={"Software Engineering Fellow"}
-        fromDate={"Aug 2021"}
-        toDate={"Nov 2021"}
-      />
-      <div className="experience-description">
-        <span className="resume-description-text">
-          I Worked in Software Engineering Immersive Program and learned all the
-          latest core knowledge of several coding langauges.
-        </span>
+        <ResumeHeading
+          heading={"General Assembly"}
+          subHeading={"Software Engineering Fellow"}
+          fromDate={"Aug 2021"}
+          toDate={"Nov 2021"}
+        />
+        <div className="experience-description">
+          <span className="resume-description-text">
+            I Worked in Software Engineering Immersive Program and learned all
+            the latest core knowledge of several coding langauges.
+          </span>
+        </div>
+        <div className="experience-description">
+          <span className="resume-description-text">
+            -Worked on daily labs and exercises in the MERN Stack and Ruby on
+            Rails
+          </span>
+          <br />
+          <span className="resume-description-text">
+            -Studied and executed dailly Javascript Algorithms
+          </span>
+          <br />
+          <span className="resume-description-text">
+            -We had an amazing culture between our cohort and established an
+            awesome, supportive network for our future coding journey.
+          </span>
+          <br />
+        </div>
       </div>
-      <div className="experience-description">
-        <span className="resume-description-text">
-          -Worked on daily labs and exercises in the MERN Stack and Ruby on
-          Rails
-        </span>
-        <br />
-        <span className="resume-description-text">
-          -Studied and executed dailly Javascript Algorithms
-        </span>
-            <br />
-            <span className="resume-description-text">
-          -We had an amazing culture between our cohort and established an
-          awesome, supportive network for our future coding journey.
-            </span>
-            <br/>
-        </div>
-        </div>
     </div>,
-        
-        <div
-        className="resume-screen-container programming-skills-container"
-        key="programming-skills"
-      >
-        {programmingSkillsDetails.map((skill, index) => (
-          <div className="skill-parent" key={index}>
-            <div className="heading-bullet"></div>
-            <span>{skill.skill}</span>
-            <div className="skill-percentage">
-              <div
-                style={{ width: skill.ratingPercentage + "%" }}
-                className="active-percentage-bar"
-              ></div>
-            </div>
+
+    <div
+      className="resume-screen-container programming-skills-container"
+      key="programming-skills"
+    >
+      {programmingSkillsDetails.map((skill, index) => (
+        <div className="skill-parent" key={index}>
+          <div className="heading-bullet"></div>
+          <span>{skill.skill}</span>
+          <div className="skill-percentage">
+            <div
+              style={{ width: skill.ratingPercentage + "%" }}
+              className="active-percentage-bar"
+            ></div>
           </div>
-        ))}
-      </div>,
+        </div>
+      ))}
+    </div>,
 
     //projects
     <div className="resume-screen-container" key="projects">
@@ -167,6 +177,7 @@ export default function Resume(props) {
           description={projectDetails.description}
           fromDate={projectDetails.duration.fromDate}
           toDate={projectDetails.duration.toDate}
+          link={projectDetails.link}
         />
       ))}
     </div>,
@@ -254,4 +265,4 @@ export default function Resume(props) {
       </div>
     </div>
   );
-};
+}

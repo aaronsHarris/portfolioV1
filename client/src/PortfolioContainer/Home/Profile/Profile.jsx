@@ -23,6 +23,7 @@ export default function Profile() {
                 {" "}
                 Hello, I'm <span className="highlighted-text">Aaron</span>
               </span>
+              
             </div>
             <div className="profile-details-role">
               <span className="primary-text">
@@ -44,7 +45,7 @@ export default function Profile() {
                   />
                 </h1>
                 <span className="profile-role-tagline">
-                  I build applications with front end and back end operations.
+                  I love to build smart and beautiful websites.
                 </span>
               </span>
             </div>
