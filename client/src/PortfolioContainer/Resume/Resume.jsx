@@ -31,7 +31,7 @@ export default function Resume(props) {
             <div>
               {props.link ? (
                 <a className="heading-date" href={props.link} target="_blank">
-                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  <i className="fa fa-arrow-right" aria-hidden="true"></i>
                 </a>
               ) : (
                 <div></div>
@@ -52,7 +52,7 @@ export default function Resume(props) {
   /* STATIC RESUME DATA FOR THE LABELS*/
   const resumeBullets = [
     { label: "Education", logoSrc: "education.svg" },
-    { label: "Work History", logoSrc: "work-history.svg" },
+    { label: "Recent Work", logoSrc: "work-history.svg" },
     { label: "Programming Skills", logoSrc: "programming-skills.svg" },
     { label: "Projects", logoSrc: "projects.svg" },
     { label: "Interests", logoSrc: "interests.svg" },
@@ -125,7 +125,7 @@ export default function Resume(props) {
       <div className="experience-container">
         <ResumeHeading
           heading={"General Assembly"}
-          subHeading={"FULL STACK DEVELOPER FELLOW"}
+          subHeading={"SOFTWARE ENGINEER FELLOW"}
           fromDate={"Aug 2021"}
           toDate={"Nov 2021"}
         />

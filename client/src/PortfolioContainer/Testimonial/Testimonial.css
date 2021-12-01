@@ -92,3 +92,9 @@
     font-weight: 400;
     margin: 0;
   }
+
+  @media only screen and (max-width: 768px){
+    .footer-image{
+        display: none;
+    }
+}

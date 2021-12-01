@@ -6,11 +6,11 @@ import "./Testimonial.css";
 import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations.js";
-import lady from '../../assets/Testimonial/lady.png'
+import breck from '../../assets/Testimonial/breck.jpeg'
+import briana from '../../assets/Testimonial/briana.jpeg'
+import jess from '../../assets/Testimonial/jessica.jpeg'
+import tyler from '../../assets/Testimonial/ty.jpeg'
 import shape from '../../assets/Testimonial/shape-bg.png'
-import man from '../../assets/Testimonial/man.png'
-import mike from '../../assets/Testimonial/mike.png'
-
 
 export default function Testimonial(props) {
   let fadeInScreenHandler = (screen) => {
@@ -68,9 +68,7 @@ export default function Testimonial(props) {
                   <div className="testi-comment">
                     <p>
                       <i className="fa fa-quote-left" />
-                      I patronized Ehizeex and when He delivered, I honestly
-                      fell in love with the project He is a very honest guy and
-                      he delivers ontime.
+                      Persistent and Passionate! I spent many hours with Aaron working out problems and figuring out solutions and his determination to see things to the end really motivated me.
                       <i className="fa fa-quote-right" />
                     </p>
                     <ul className="stars list-unstyled">
@@ -92,9 +90,9 @@ export default function Testimonial(props) {
                     </ul>
                   </div>
                   <div className="client-info">
-                    <img src={lady} alt="no internet connection"></img>
-                    <h5>Daisy Dominic</h5>
-                    <p>CEO InansGlobal</p>
+                    <img src={breck} alt="no internet connection"></img>
+                    <h5>Breck Zeyer</h5>
+                    <p>Software Engineer</p>
                   </div>
                 </div>
               </div>
@@ -104,9 +102,7 @@ export default function Testimonial(props) {
                   <div className="testi-comment">
                     <p>
                       <i className="fa fa-quote-left" />
-                      It was nice hiring this guy for my e-commerce project.He
-                      delivered even more than i can imagine. I recommend him
-                      for you.
+                      Aaron always had to time to help, even when he had a road block himself, he always made the time for other people.
                       <i className="fa fa-quote-right" />
                     </p>
                     <ul className="stars list-unstyled">
@@ -128,9 +124,9 @@ export default function Testimonial(props) {
                     </ul>
                   </div>
                   <div className="client-info">
-                    <img src={mike} alt="no internet connection"></img>
-                    <h5>Mikel</h5>
-                    <p>CEO MikeTech</p>
+                    <img src={briana} alt="no internet connection"></img>
+                    <h5>Briana Gonzalez</h5>
+                    <p>Software Engineer</p>
                   </div>
                 </div>
               </div>
@@ -139,9 +135,7 @@ export default function Testimonial(props) {
                   <div className="testi-comment">
                     <p>
                       <i className="fa fa-quote-left" />
-                      When he delivered my job, my head spinned, it was so nice
-                      and he implemented every functionality i requested for.
-                      Thank you.
+                      I worked on a development team with Aaron and he was a very reliable teammate. He had some great design ideas and problem solving skills.
                       <i className="fa fa-quote-right" />
                     </p>
                     <ul className="stars list-unstyled">
@@ -163,9 +157,9 @@ export default function Testimonial(props) {
                     </ul>
                   </div>
                   <div className="client-info">
-                    <img src={lady} alt="no internet connection"></img>
-                    <h5>Daisy Dominic</h5>
-                    <p>CEO InansGlobal</p>
+                    <img src={tyler} alt="no internet connection"></img>
+                    <h5>Tyler Washington</h5>
+                    <p>Software Engineer</p>
                   </div>
                 </div>
               </div>
@@ -174,9 +168,7 @@ export default function Testimonial(props) {
                   <div className="testi-comment">
                     <p>
                       <i className="fa fa-quote-left" />
-                      This guy is incredibly awesome, I hired him and when He
-                      delivered, I honestly fell in love with the project. He is
-                      indeed a great guy,
+                      Aaron really put in the hours on one of our projects. He's deffinately someone I would like working with again.
                       <i className="fa fa-quote-right" />
                     </p>
                     <ul className="stars list-unstyled">
@@ -198,9 +190,9 @@ export default function Testimonial(props) {
                     </ul>
                   </div>
                   <div className="client-info">
-                    <img src={man} alt="no internet connection"></img>
-                    <h5>John Smith</h5>
-                    <p>Bnaker</p>
+                    <img src={jess} alt="client"></img>
+                    <h5>Jessica Choe</h5>
+                    <p>Software Engineer</p>
                   </div>
                 </div>
               </div>
@@ -209,7 +201,7 @@ export default function Testimonial(props) {
         </div>
       </section>
       <div className="footer-image">
-        <img src={shape} alt="Phot0 not responding" />
+        <img src={shape} alt="shape" />
       </div>
     </div>
   );

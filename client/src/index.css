@@ -50,6 +50,9 @@
 
 * {
   outline: none;
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
 
 body {
@@ -101,11 +104,11 @@ body ::-webkit-scrollbar-thumb {
   font-size: 12px;
   background-color: #1f2235;
 }
-/* @media only screen and (max-width: 414px) {
+@media only screen and (max-width: 414px) {
   .primary-btn {
     font-size: 13px;
   }
-} */
+}
 
 .primary-btn:hover {
   color: aliceblue;
@@ -123,6 +126,7 @@ body ::-webkit-scrollbar-thumb {
   .highlighted-btn {
     z-index: -900;
   }
+  
 }
 
 .red-border {
