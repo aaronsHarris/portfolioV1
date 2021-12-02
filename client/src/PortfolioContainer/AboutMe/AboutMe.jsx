@@ -65,9 +65,9 @@ export default function AboutMe(props) {
               <button className="btn primary-btn"onClick={() => ScrollService.scrollHandler.scrollToHireMe()}> Hire Me</button>
               <a
                 href="../../assets/Current resume dec19 (1).pdf"
-                download="../../assets/Current resume dec19 (1).pdf"
+                download="../../../assets/AaronsHarrisResume.docx.pdf"
               >
-                <button className="btn highlighted-btn">Get Resume</button>
+                <button className="btn highlighted-btn">Get Resume <i className="fa fa-arrow-down"></i></button>
               </a>
             </div>
           </div>
