@@ -169,7 +169,7 @@ export default function Testimonial(props) {
                   <div className="testi-comment">
                     <p>
                       <i className="fa fa-quote-left" />
-                      Aaron really put in the hours on one of our projects. He's deffinately someone I would like working with again.
+                      Aaron really put in the hours on one of our projects. He's definately someone I would like working with again.
                       <i className="fa fa-quote-right" />
                     </p>
                     <ul className="stars list-unstyled">
