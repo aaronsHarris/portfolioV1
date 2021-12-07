@@ -29,7 +29,7 @@ export default class ScrollService {
     homeScreen.scrollIntoView({ behavior: "smooth" });
   };
 
-  /* CHECK IF ELEMENT IS IN VIEW .this simply means if the document appears fully on the screen or not */
+  // CHECK IF ELEMENT IS IN VIEW 
   isElementInView = (elem, type) => {
     let rec = elem.getBoundingClientRect();
     //this method returns a DOMRect object providing information about the size of an element and its position relative to the viewport.
