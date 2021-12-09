@@ -1,7 +1,7 @@
 import Typical from "react-typical";
 import ScrollService from "../../../utils/ScrollService";
 import './Profile.css'
-
+import myPDF from '../../../assets/aaronHarrisResume.pdf'
 
 export default function Profile() {
   return (
@@ -43,6 +43,7 @@ export default function Profile() {
                       1000,
                     ]}
                   />
+                  
                 </h1>
                 <span className="profile-role-tagline">
                   I love to build smart and beautiful websites.
@@ -51,8 +52,9 @@ export default function Profile() {
             </div>
             <div className="profile-options">
               <button className="btn primary-btn" onClick={() => ScrollService.scrollHandler.scrollToHireMe()}> Hire Me</button>
-              <a download="AaronHarris.pdf" target="_blank" href="../../assets/AaronsHarrisResume.docx (1).pdf">
-                <button className="btn highlighted-btn">Get Resume <i className="fa fa-arrow-down"></i></button>
+
+              <a href={myPDF} download='aaronHarrisResume.pdf'>
+                <button className="btn highlighted-btn">Get Resume</button>
               </a>
             </div>
           </div>

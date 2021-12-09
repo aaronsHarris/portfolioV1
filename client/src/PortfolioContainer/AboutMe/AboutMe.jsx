@@ -3,7 +3,7 @@ import ScreenHeading from "../../utils/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utils/ScrollService";
 import Animations from "../../utils/Animations";
 import './AboutMe.css'
-
+import myPDF from '../../assets/aaronHarrisResume.pdf'
 
 export default function AboutMe(props) {
 
@@ -63,7 +63,7 @@ export default function AboutMe(props) {
             </div>
             <div className="about-me-options">
               <button className="btn primary-btn"onClick={() => ScrollService.scrollHandler.scrollToHireMe()}> Hire Me</button>
-              <a download="AaronHarris.pdf" target="_blank" href="../../../public/aaronResume.pdf">
+              <a download="aaronHarrisResume.pdf" href={myPDF}>
                 <button className="btn highlighted-btn">Get Resume</button>
               </a>
             </div>
